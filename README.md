@@ -1,4 +1,3 @@
-Markdown
 
 <img width="512" height="512" alt="Movie Database logo" src="https://github.com/user-attachments/assets/d1ae6632-d69a-4760-ba44-608cf4a4830c" />
 
