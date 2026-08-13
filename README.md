@@ -65,7 +65,7 @@ df_financial = df[(df['budget_adj'] > 0) & (df['revenue_adj'] > 0)].copy()
 df_financial['profit_adj'] = df_financial['revenue_adj'] - df_financial['budget_adj']
 df_financial['roi'] = df_financial['profit_adj'] / df_financial['budget_adj']
 
-Step B: Budget vs. Revenue Code
+### Step B: Budget vs. Revenue Code
 Python
 # Check relationship between budget and revenue
 plt.figure(figsize=(8, 5))
@@ -79,7 +79,7 @@ plt.show()
 # Print correlation score
 print("Correlation:", df_financial['budget_adj'].corr(df_financial['revenue_adj']))
 
-Step C: Genre Analysis Code
+### Step C: Genre Analysis Code
 Python
 # Separate movies with multiple genres
 df_genres = df_financial.assign(genres=df_financial['genres'].str.split('|')).explode('genres')
