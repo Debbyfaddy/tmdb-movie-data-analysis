@@ -14,27 +14,27 @@ This project uses data from **The Movie Database (TMDb)** to answer basic busine
 ---
 
 ## 2. Key Questions Asked
-* **Money:** Does spending more money on a movie mean making more money back?
-* **Genres:** Which movie types (like Action or Animation) make the most money?
-* **Ratings:** Do highly-rated movies always become popular and make the most money?
-* **Time:** How have movie lengths and the number of movies made changed over the years?
+*   **Money:** Does spending more money on a movie mean making more money back?
+*   **Genres:** Which movie types (like Action or Animation) make the most money?
+*   **Ratings:** Do highly-rated movies always become popular and make the most money?
+*   **Time:** How have movie lengths and the number of movies made changed over the years?
 
 ---
 
 ## 3. About the Data
-* **File:** `tmdb-movies.csv`
-* **Total Movies:** 10,866 movies
-* **Main Information:** Title, Budget, Revenue, Ratings, Popularity, Genres, Release Date, and Runtime.
+*   **File:** `tmdb-movies.csv`
+*   **Total Movies:** 10,866 movies
+*   **Main Information:** Title, Budget, Revenue, Ratings, Popularity, Genres, Release Date, and Runtime.
 
 ---
 
 ## 4. How the Data Was Cleaned
 Before analyzing the data, it was cleaned using **Python**:
-* Removed repeated (duplicate) movies.
-* Filled in missing information like missing director or actor names with `'Unknown'`.
-* Filtered out movies with `$0` recorded budget or revenue so calculations stayed accurate.
-* Created new columns for **Profit** (`Revenue - Budget`) and **ROI** (Return on Investment).
-* Split lists of genres so each genre could be counted individually.
+*   Removed repeated (duplicate) movies.
+*   Filled in missing information like missing director or actor names with `'Unknown'`.
+*   Filtered out movies with `$0` recorded budget or revenue so calculations stayed accurate.
+*   Created new columns for **Profit** (`Revenue - Budget`) and **ROI** (Return on Investment).
+*   Split lists of genres so each genre could be counted individually.
 
 ---
 
@@ -64,6 +64,7 @@ df['release_month'] = df['release_date'].dt.month_name()
 df_financial = df[(df['budget_adj'] > 0) & (df['revenue_adj'] > 0)].copy()
 df_financial['profit_adj'] = df_financial['revenue_adj'] - df_financial['budget_adj']
 df_financial['roi'] = df_financial['profit_adj'] / df_financial['budget_adj']
+
 Step B: Budget vs. Revenue Code
 Python
 # Check relationship between budget and revenue
@@ -77,6 +78,7 @@ plt.show()
 
 # Print correlation score
 print("Correlation:", df_financial['budget_adj'].corr(df_financial['revenue_adj']))
+
 Step C: Genre Analysis Code
 Python
 # Separate movies with multiple genres
@@ -93,6 +95,7 @@ plt.xlabel('Average Revenue ($)')
 plt.ylabel('Genre')
 plt.savefig('visuals/top_genres_revenue.png', bbox_inches='tight')
 plt.show()
+
 6. What We Found Out (Results)
 Big Budgets = Big Revenue: Movies with higher budgets usually bring in higher overall sales at the box office.
 
@@ -103,6 +106,7 @@ Best Value for Money: Horror and Mystery movies cost less to make but bring back
 Ratings vs. Popularity: Good reviews do not automatically mean high sales—some popular blockbusters have average user scores.
 
 Movie Length: Most movies made today stay between 95 and 110 minutes.
+
 
 7. Recommendations
 For Low-Risk Investors: Focus on Horror and Mystery films. They require smaller budgets and offer the highest return on investment (ROI).
